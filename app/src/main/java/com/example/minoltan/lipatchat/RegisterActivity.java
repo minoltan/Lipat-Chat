@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -28,6 +29,8 @@ private TextInputLayout mEmail;
 private TextInputLayout mPassword;
 private Button mCreateBtn;
 
+private Toolbar mtoolbar;
+
     private DatabaseReference mDatabase;
 
     private FirebaseAuth mAuth;
@@ -39,10 +42,15 @@ private Button mCreateBtn;
         setContentView(R.layout.activity_register);
         mAuth = FirebaseAuth.getInstance();
 
+        mtoolbar = (Toolbar) findViewById(R.id.register_toolbar);
+        setSupportActionBar(mtoolbar);
+        getSupportActionBar().setTitle("Create Account");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mName = findViewById(R.id.reg_display_name);
-        mEmail = findViewById(R.id.reg_email);
-        mPassword = findViewById(R.id.reg_password);
+
+        mName = (TextInputLayout) findViewById(R.id.reg_display_name);
+        mEmail = (TextInputLayout) findViewById(R.id.reg_email);
+        mPassword = (TextInputLayout) findViewById(R.id.reg_password);
 
 
 
