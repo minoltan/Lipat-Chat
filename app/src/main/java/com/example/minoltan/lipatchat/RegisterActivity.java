@@ -40,18 +40,18 @@ private Button mCreateBtn;
         mAuth = FirebaseAuth.getInstance();
 
 
-        mName = (TextInputLayout) findViewById(R.id.reg_display_name);
-        mEmail = (TextInputLayout) findViewById(R.id.reg_email);
-        mPassword =(TextInputLayout) findViewById(R.id.reg_password);
+        mName = findViewById(R.id.reg_display_name);
+        mEmail = findViewById(R.id.reg_email);
+        mPassword = findViewById(R.id.reg_password);
 
 
 
-        mCreateBtn = (Button) findViewById(R.id.reg_create_btn);
+        mCreateBtn = findViewById(R.id.reg_create_btn);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("User_01");
 
 
-       /* mCreateBtn.setOnClickListener(new View.OnClickListener() {
+      /*  mCreateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String name = mName.getEditText().getText().toString().trim();

@@ -18,7 +18,7 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
 
 
-        mRegBtn = (Button) findViewById(R.id.start_reg_btn);
+        mRegBtn = findViewById(R.id.start_reg_btn);
 
         mRegBtn.setOnClickListener(new View.OnClickListener() {
             @Override
