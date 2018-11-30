@@ -4,6 +4,8 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private Toolbar mToolbar;
+    private ViewPager mViewpager;
+    private SectiosPagerAdapter mSectionsPagerAdapter;
+    private TabLayout mTabLayout;
 
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -32,6 +37,15 @@ public class MainActivity extends AppCompatActivity {
         mToolbar = findViewById(R.id.main_page_toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Lapit Chat");
+
+        //Tabs
+        mViewpager = (ViewPager) findViewById(R.id.main_tabPager);
+        mSectionsPagerAdapter = new SectiosPagerAdapter(getSupportFragmentManager());
+
+        mViewpager.setAdapter(mSectionsPagerAdapter);
+
+        mTabLayout = (TabLayout) findViewById(R.id.main_tabs);
+        mTabLayout.setupWithViewPager(mViewpager);
 
     }
 
