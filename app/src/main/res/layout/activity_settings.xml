@@ -53,7 +53,7 @@
     <Button
         android:id="@+id/settings_status_btn"
         android:layout_width="130dp"
-        android:layout_height="38dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/settings_image_btn"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
