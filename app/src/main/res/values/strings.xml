@@ -24,4 +24,9 @@
     <string name="welcome_to_request_page">Welcome to request page</string>
     <string name="welcome_to_friends_page">Welcome to Friends Page</string>
     <string name="welcome_to_chats_page">Welcome to Chats Page</string>
+    <string name="name">Display Name</string>
+    <string name="using_my_chat_app">Hey there I am using My chat App</string>
+    <string name="image">CHANGE IMAGE</string>
+    <string name="status">CHANGE STATUS</string>
+    <string name="change_status">Change Status</string>
 </resources>

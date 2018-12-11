@@ -47,11 +47,15 @@ public class StatusActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Account Status");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        String status_value = getIntent().getStringExtra("status_value");
+
         //Progress
         mProgress = new ProgressDialog(this);
 
         mStatus = (TextInputLayout) findViewById(R.id.status_input);
         mSavebtn = (Button) findViewById(R.id.status_save_btn);
+
+        mStatus.getEditText().setText(status_value);
 
         mSavebtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -17,7 +17,7 @@
         android:layout_marginStart="107dp"
         android:layout_marginTop="49dp"
         android:layout_marginEnd="107dp"
-        tools:src="@drawable/avatar" />
+        tools:src="@drawable/avatar02" />
 
     <TextView
         android:id="@+id/settings_display_name"
@@ -26,9 +26,9 @@
         android:layout_below="@+id/settings_image"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
-        android:text="Display Name"
+        android:text="@string/name"
         android:textColor="@color/colorWhite"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/settings_status"
@@ -37,7 +37,7 @@
         android:layout_below="@+id/settings_display_name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="6dp"
-        android:text="Hey there I am using My chat App"
+        android:text="@string/using_my_chat_app"
         android:textColor="@color/colorWhite" />
 
     <Button
@@ -47,19 +47,19 @@
         android:layout_below="@+id/settings_status"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
-        android:text="CHANGE IMAGE"
+        android:text="@string/image"
         android:textColor="@color/colorPrimary"/>
 
     <Button
         android:id="@+id/settings_status_btn"
-        android:layout_width="130dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/settings_image_btn"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="54dp"
+        android:layout_marginTop="15dp"
         android:background="@color/darkorange"
-        android:text="CHANGE STATUS" />
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="@string/change_status" />
 
 </RelativeLayout>

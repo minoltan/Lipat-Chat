@@ -28,8 +28,11 @@ public class SettingsActivity extends AppCompatActivity {
     private CircleImageView mDisplayImage;
     private TextView mName;
     private TextView mStatus;
+    private Button mImage_btn;
 
     private Button mStatus_btn;
+
+    private static final int GALLERY_PICK = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class SettingsActivity extends AppCompatActivity {
         mStatus = (TextView) findViewById(R.id.settings_status);
 
         mStatus_btn = (Button) findViewById(R.id.settings_status_btn);
+        mImage_btn = (Button) findViewById(R.id.settings_image_btn);
 
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -52,13 +56,13 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Toast.makeText(SettingsActivity.this,dataSnapshot.toString(), Toast.LENGTH_LONG).show();
-               /*String name = dataSnapshot.child("Name").getValue().toString();
+                /*String name = dataSnapshot.child("Name").getValue().toString();
                 String image = dataSnapshot.child("image").getValue().toString();
                 String status = dataSnapshot.child("status").getValue().toString();
-                String thumb_image = dataSnapshot.child("thumb_img").getValue().toString();*/
+                String thumb_image = dataSnapshot.child("thumb_img").getValue().toString();
 
-               // mName.setText(name);
-                //mStatus.setText(status);
+                mName.setText(name);
+                mStatus.setText(status);*/
             }
 
             @Override
@@ -70,9 +74,24 @@ public class SettingsActivity extends AppCompatActivity {
         mStatus_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String status_value = mStatus_btn.getText().toString();
+
                 Intent status_intent = new Intent(SettingsActivity.this, StatusActivity.class);
+                status_intent.putExtra("status_value", status_value);
                 startActivity(status_intent);
             }
         });
+
+        mImage_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gallery_intent = new Intent();
+                gallery_intent.setType("image/*");
+                gallery_intent.setAction(Intent.ACTION_GET_CONTENT);
+
+                startActivityForResult(Intent.createChooser(gallery_intent, "SELECT IMAGE"), GALLERY_PICK);
+            }
+        });
+
     }
 }
