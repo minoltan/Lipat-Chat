@@ -2,6 +2,7 @@ package com.example.minoltan.lipatchat;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -87,18 +88,33 @@ public class SettingsActivity extends AppCompatActivity {
         mImage_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* Intent gallery_intent = new Intent();
+               Intent gallery_intent = new Intent();
                 gallery_intent.setType("image/*");
                 gallery_intent.setAction(Intent.ACTION_GET_CONTENT);
 
-                startActivityForResult(Intent.createChooser(gallery_intent, "SELECT IMAGE"), GALLERY_PICK);*/
+                startActivityForResult(Intent.createChooser(gallery_intent, "SELECT IMAGE"), GALLERY_PICK);
 
                 // start picker to get image for cropping and then use the image in cropping activity
-                CropImage.activity()
+                /*CropImage.activity()
                         .setGuidelines(CropImageView.Guidelines.ON)
-                        .start(SettingsActivity.this);
+                        .start(SettingsActivity.this);*/
+
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == GALLERY_PICK && resultCode == RESULT_OK){
+            String imageUri = data.getDataString();
+
+            Toast.makeText(SettingsActivity.this,imageUri, Toast.LENGTH_LONG).show();
+
+
+
+        }
     }
 }
