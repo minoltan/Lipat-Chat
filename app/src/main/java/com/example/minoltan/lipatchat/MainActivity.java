@@ -39,12 +39,12 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Lapit Chat");
 
         //Tabs
-        mViewpager = (ViewPager) findViewById(R.id.main_tabPager);
+        mViewpager = findViewById(R.id.main_tabPager);
         mSectionsPagerAdapter = new SectiosPagerAdapter(getSupportFragmentManager());
 
         mViewpager.setAdapter(mSectionsPagerAdapter);
 
-        mTabLayout = (TabLayout) findViewById(R.id.main_tabs);
+        mTabLayout = findViewById(R.id.main_tabs);
         mTabLayout.setupWithViewPager(mViewpager);
 
     }

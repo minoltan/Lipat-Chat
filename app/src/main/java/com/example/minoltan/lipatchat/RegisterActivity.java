@@ -53,7 +53,7 @@ private ProgressDialog mRegProgress;
         setContentView(R.layout.activity_register);
         mAuth = FirebaseAuth.getInstance();
 
-        mtoolbar = (Toolbar) findViewById(R.id.register_toolbar);
+        mtoolbar = findViewById(R.id.register_toolbar);
         setSupportActionBar(mtoolbar);
         getSupportActionBar().setTitle("Create Account");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -61,9 +61,9 @@ private ProgressDialog mRegProgress;
         mRegProgress = new ProgressDialog(this);
 
 
-        mName = (TextInputLayout) findViewById(R.id.reg_display_name);
-        mEmail = (TextInputLayout) findViewById(R.id.login_email);
-        mPassword = (TextInputLayout) findViewById(R.id.login_password);
+        mName = findViewById(R.id.reg_display_name);
+        mEmail = findViewById(R.id.login_email);
+        mPassword = findViewById(R.id.login_password);
 
 
 
