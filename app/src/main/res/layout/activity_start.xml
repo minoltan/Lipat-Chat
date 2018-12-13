@@ -12,12 +12,10 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/start_login_btn"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="214dp"
-        android:layout_marginBottom="116dp"
-        android:text="Welcome to My Chat"
+        android:layout_marginTop="124dp"
+        android:text="Welcome  My Citizen"
         android:textColor="@color/colorWhite"
         android:textSize="24sp" />
 
@@ -42,4 +40,16 @@
         android:background="@color/darkorange"
         android:text="Already have account"
         android:textColor="@color/colorWhite" />
+
+    <!--<ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="176dp"
+        android:layout_height="188dp"
+        android:layout_above="@+id/start_login_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="11dp"
+        android:contentDescription="TODO"
+        app:srcCompat="@drawable/avatar02" />-->
+
+
 </RelativeLayout>

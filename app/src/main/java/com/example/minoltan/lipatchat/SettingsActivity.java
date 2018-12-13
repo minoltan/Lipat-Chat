@@ -1,5 +1,6 @@
 package com.example.minoltan.lipatchat;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -23,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -35,6 +37,8 @@ public class SettingsActivity extends AppCompatActivity {
     private DatabaseReference mUserDatabase;
     private FirebaseUser mCurrentUser;
 
+
+
     //Android Layout
     private CircleImageView mDisplayImage;
     private TextView mName;
@@ -45,7 +49,10 @@ public class SettingsActivity extends AppCompatActivity {
 
     private static final int GALLERY_PICK = 1;
 
+    //Firebase
     private StorageReference mImageStorage;
+
+    private ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,13 +78,15 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Toast.makeText(SettingsActivity.this,dataSnapshot.toString(), Toast.LENGTH_LONG).show();
-                /*String name = dataSnapshot.child("Name").getValue().toString();
+               /* String name = dataSnapshot.child("Name").getValue().toString();
                 String image = dataSnapshot.child("image").getValue().toString();
                 String status = dataSnapshot.child("status").getValue().toString();
                 String thumb_image = dataSnapshot.child("thumb_img").getValue().toString();
 
                 mName.setText(name);
                 mStatus.setText(status);*/
+
+                Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(mDisplayImage);
             }
 
             @Override
@@ -141,21 +150,48 @@ public class SettingsActivity extends AppCompatActivity {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
 
+                mProgressDialog = new ProgressDialog(SettingsActivity.this);
+                mProgressDialog.setTitle("Uploading Image");
+                mProgressDialog.setMessage("Please wait while upload and process image");
+                mProgressDialog.setCanceledOnTouchOutside(false);
+                mProgressDialog.show();
+
                 Uri resultUri = result.getUri();
 
-                StorageReference filepath = mImageStorage.child("profile_images").child(random()+".jpg");
+                String current_user_id = mCurrentUser.getUid();
+
+                StorageReference filepath = mImageStorage.child("profile_images").child(current_user_id+".jpg");
 
                 filepath.putFile(resultUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                        if (task.isSuccessful())
-                            Toast.makeText(SettingsActivity.this, "Working" ,Toast.LENGTH_LONG).show();
+                        if (task.isSuccessful()) {
+
+                            //Wrong code
+                            String download_url = task.getResult().getStorage().getDownloadUrl().toString();
+
+                            mUserDatabase.child("image").setValue(download_url).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()){
+                                            mProgressDialog.dismiss();
+
+                                            Toast.makeText(SettingsActivity.this, "Image is Upload Success", Toast.LENGTH_LONG).show();
+                                        }
+                                }
+                            });
+                           Toast.makeText(SettingsActivity.this, "Working", Toast.LENGTH_LONG).show();
+
+                        } else {
+                            Toast.makeText(SettingsActivity.this, "Error", Toast.LENGTH_LONG).show();
+                            mProgressDialog.dismiss();
+                        }
                     }
                 });
 
-            } else {
+            } else if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE){
 
-                Toast.makeText(SettingsActivity.this, "Error" ,Toast.LENGTH_LONG).show();
+                    Exception error = result.getError();
             }
         }
 

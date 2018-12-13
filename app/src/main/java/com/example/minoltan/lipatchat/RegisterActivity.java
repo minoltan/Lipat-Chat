@@ -61,7 +61,7 @@ private ProgressDialog mRegProgress;
         mRegProgress = new ProgressDialog(this);
 
 
-        mName = findViewById(R.id.reg_display_nam);
+        mName = findViewById(R.id.reg_display_name);
         mEmail = findViewById(R.id.login_email);
         mPassword = findViewById(R.id.login_password);
 
