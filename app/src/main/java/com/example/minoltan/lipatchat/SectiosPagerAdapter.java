@@ -38,13 +38,13 @@ class SectiosPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position){
         switch (position){
             case 0:
-                return "REQUESTS";
+                return "NEWS FEED";
 
             case  1:
-                return  "CHATS";
+                return  "COMPLAINT";
 
             case 2:
-                return  "FRIENDS";
+                return  "LAWS";
 
             default:
                 return null;

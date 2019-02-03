@@ -1,14 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="0dp"
     tools:context=".ChatsFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/welcome_to_chats_page" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="284dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/colorPrimary"
+        android:paddingLeft="10dp"
+        android:paddingTop="2dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="2dp"
+        android:text="Make a complaint"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/Complaint_text"
+        android:layout_width="360dp"
+        android:layout_height="142dp"
+        android:layout_above="@+id/Complaint_button"
+        android:layout_below="@+id/textView9"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="#f2f4f7"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Type Here"
+        android:textAlignment="center" />
+
+
+    <Button
+        android:id="@+id/Complaint_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/shape"
+        android:text="Complain Now" />
+
+</RelativeLayout>
